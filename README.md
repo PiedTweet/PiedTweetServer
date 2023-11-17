@@ -1,4 +1,4 @@
-# My personal NodeJs and Typescript Tweet Project
+# NodeJs and Typescript Tweet Project
 
 ---
 
@@ -6,9 +6,7 @@
 
 My Class [PIED tới đây](https://www.facebook.com/PiedTeam)
 
-I'm very grateful for having you as teacher in my life
-
-Without you, I won't be someone like today
+We are very grateful for having Lê Điệp as our teacher in our lives. Without him, we wouldn't be who we are today.
 
 ---
 
