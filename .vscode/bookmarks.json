@@ -1,0 +1,14 @@
+{
+	"files": [
+		{
+			"path": "src/middlewares/users.middlewares.ts",
+			"bookmarks": [
+				{
+					"line": 243,
+					"column": 5,
+					"label": "decoded_authorization_Type"
+				}
+			]
+		}
+	]
+}
