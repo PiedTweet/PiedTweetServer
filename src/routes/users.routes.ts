@@ -13,8 +13,7 @@ import {
   resendEmailVerifyController,
   resetPasswordController,
   unfollowController,
-  updateMeController,
-  verifyForgotPasswordController
+  updateMeController
 } from '~/controllers/users.controllers'
 import {
   accessTokenValidator,
@@ -121,11 +120,11 @@ des: khi ng dùng nhấp vào link trong mail để reset password
 họ sẽ gửi req kèm theo forgot_password_token lên 
  */
 
-usersRouter.post(
-  '/verify-forgot-password',
-  verifyForgotPasswordTokenValidator,
-  wrapAsync(verifyForgotPasswordController)
-)
+// usersRouter.post(
+//   '/verify-forgot-password',
+//   verifyForgotPasswordTokenValidator,
+//   wrapAsync(verifyForgotPasswordController)
+// )
 
 /*
 des: reset password
