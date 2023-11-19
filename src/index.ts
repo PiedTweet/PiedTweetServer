@@ -7,12 +7,22 @@ import { initFolder } from './utils/file'
 import { config } from 'dotenv'
 import staticRouter from './routes/static.routes'
 import tweetsRouter from './routes/tweet.routes'
+import cors from 'cors'
 config()
 
 const PORT = process.env.PORT_DEVELOPMENT
 
 const app = express()
 initFolder()
+
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true,
+  allowedHeaders: 'Content-Type,Authorization',
+  optionsSuccessStatus: 200
+}
+
+app.use(cors(corsOptions))
 
 // Middleware to parse incoming requests come with JSON payloads
 app.use(express.json())
