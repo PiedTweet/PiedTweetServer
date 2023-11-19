@@ -6,7 +6,8 @@ import { Follower } from '~/models/schemas/Follower.schema'
 import Tweet from '~/models/schemas/Tweet.schema'
 
 config()
-const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@tweetprojectk18f3.0j8g7fl.mongodb.net/?retryWrites=true&w=majority`
+
+const uriMongoProductionDatabase = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@productioncluster.hwnottq.mongodb.net/?retryWrites=true&w=majority`
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 
@@ -15,7 +16,7 @@ class DatabaseService {
   private db: Db
 
   constructor() {
-    this.client = new MongoClient(uri)
+    this.client = new MongoClient(uriMongoProductionDatabase)
 
     // tạo ra một bản thể của database mình đang muốn kết nối tới
     this.db = this.client.db(`${process.env.DB_NAME}`)
