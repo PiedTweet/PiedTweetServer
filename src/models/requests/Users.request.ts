@@ -2,7 +2,7 @@ import { ParamsDictionary } from 'express-serve-static-core'
 import { JwtPayload } from 'jsonwebtoken'
 import { UserVerifyStatus } from '~/constants/enums'
 
-export interface RegisterReqBody {
+export interface IRegisterReqBody {
   name: string
   email: string
   password: string
@@ -10,20 +10,20 @@ export interface RegisterReqBody {
   date_of_birth: string
 }
 
-export interface LoginReqBody {
+export interface ILoginReqBody {
   email: string
   password: string
 }
 
-export interface LogoutReqBody {
+export interface ILogoutReqBody {
   refresh_token: string
 }
 
-export interface VerifyEmailReqBody {
+export interface IVerifyEmailReqBody {
   email_verify_token: string
 }
 
-export interface TokenPayload extends JwtPayload {
+export interface ITokenPayload extends JwtPayload {
   user_id: string
   refresh_token: string
   verify: UserVerifyStatus
@@ -31,13 +31,13 @@ export interface TokenPayload extends JwtPayload {
   iat: number
 }
 
-export interface ResetPasswordBody {
+export interface IResetPasswordBody {
   password: string
   confirm_password: string
   forgot_password_token: string
 }
 
-export interface UpdateMeReqBody {
+export interface IUpdateMeReqBody {
   name?: string
   date_of_birth?: string //vì ngta truyền lên string dạng ISO8601, k phải date
   bio?: string
@@ -49,7 +49,7 @@ export interface UpdateMeReqBody {
 }
 //vì đây là route patch nên ngta truyền thiếu 1 trong các prop trên cũng k sao
 
-export interface GetProfileReqParams extends ParamsDictionary {
+export interface IGetProfileReqParams extends ParamsDictionary {
   username: string
 }
 
@@ -57,16 +57,16 @@ export interface FollowReqBody {
   followed_user_id: string
 }
 
-export interface UnfollowReqParams extends ParamsDictionary {
+export interface IUnfollowReqParams extends ParamsDictionary {
   user_id: string
 }
 
-export interface ChangePasswordReqBody {
+export interface IChangePasswordReqBody {
   old_password: string
   password: string
   confirm_password: string
 }
 
-export interface RefreshTokenReqBody {
+export interface IRefreshTokenReqBody {
   refresh_token: string
 }

@@ -1,10 +1,10 @@
-import { TweetRequestBody } from '~/models/requests/Tweet.request'
+import { ITweetRequestBody } from '~/models/requests/Tweet.request'
 import databaseService from './database.services'
 import Tweet from '~/models/schemas/Tweet.schema'
 import { ObjectId } from 'mongodb'
 
 class TweetsService {
-  async createTweet(user_id: string, body: TweetRequestBody) {
+  async createTweet(user_id: string, body: ITweetRequestBody) {
     // lưu vào database
     const result = await databaseService.tweets.insertOne(
       new Tweet({

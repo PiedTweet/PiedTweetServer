@@ -2,7 +2,7 @@ import axios from 'axios'
 import { Follower } from './../models/schemas/Follower.schema'
 import databaseService from '~/services/database.services'
 import User from '~/models/schemas/User.schema'
-import { RegisterReqBody, UpdateMeReqBody } from '~/models/requests/Users.request'
+import { IRegisterReqBody, IUpdateMeReqBody } from '~/models/requests/Users.request'
 import { hashPassword } from '~/utils/crypto'
 import { signToken, verifyToken } from '~/utils/jwt'
 import { TokenType, UserVerifyStatus } from '~/constants/enums'
@@ -93,7 +93,7 @@ class UsersService {
     return Boolean(user)
   }
 
-  async register(payLoad: RegisterReqBody) {
+  async register(payLoad: IRegisterReqBody) {
     const user_id = new ObjectId()
     const email_verify_token = await this.signEmailVerifyToken({
       user_id: user_id.toString(),
@@ -267,7 +267,7 @@ class UsersService {
     return user
   }
 
-  async updateMe(user_id: string, payload: UpdateMeReqBody) {
+  async updateMe(user_id: string, payload: IUpdateMeReqBody) {
     // nếu người dùng muốn update date_of_birth thì phải chuyển về dạng date
     //                                            nếu có date_of_birth thì ghi đè date_of_birth cũ
     const _payload = payload.date_of_birth
@@ -302,6 +302,7 @@ class UsersService {
       { username },
       {
         projection: {
+          //tức là khi trả về thì KHÔNG trả về những cái này
           password: 0,
           email_verify_token: 0,
           forgot_password_token: 0,
@@ -318,6 +319,7 @@ class UsersService {
         status: HTTP_STATUS.NOT_FOUND
       })
     }
+    return user
   }
 
   async follow(user_id: string, followed_user_id: string) {

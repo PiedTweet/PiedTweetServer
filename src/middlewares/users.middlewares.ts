@@ -12,7 +12,7 @@ import { JsonWebTokenError } from 'jsonwebtoken'
 import HTTP_STATUS from '~/constants/httpStatus'
 import _, { capitalize } from 'lodash'
 import { ObjectId } from 'mongodb'
-import { TokenPayload } from '~/models/requests/Users.request'
+import { ITokenPayload } from '~/models/requests/Users.request'
 import { TokenType, UserVerifyStatus } from '~/constants/enums'
 import { REGEX_USERNAME } from '~/constants/regex'
 
@@ -484,7 +484,7 @@ export const resetPasswordValidator = validate(
 
 export const verifiedUserValidator = (req: Request, res: Response, next: NextFunction) => {
   // kiểm tra xem user đã verify hay chưa
-  const { verify } = req.decoded_authorization as TokenPayload
+  const { verify } = req.decoded_authorization as ITokenPayload
   if (verify === 0) {
     throw new ErrorWithStatus({
       message: USERS_MESSAGES.USER_NOT_VERIFIED,
@@ -612,7 +612,7 @@ export const changePasswordValidator = validate(
         custom: {
           // Ở ĐÂY OPTIONS LÀ 1 HÀM ASYNC CALLBACK NÊN KHI ĐC GỌI LẠI THÌ value đại diện cho old_password
           options: async (value, { req }) => {
-            const { user_id } = req.decoded_authorization as TokenPayload
+            const { user_id } = req.decoded_authorization as ITokenPayload
 
             // tìm user bằng user_id và password
             const user = await databaseService.users.findOne({

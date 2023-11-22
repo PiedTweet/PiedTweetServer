@@ -9,6 +9,16 @@
 					"label": "decoded_authorization_Type"
 				}
 			]
+		},
+		{
+			"path": "src/routes/users.routes.ts",
+			"bookmarks": [
+				{
+					"line": 94,
+					"column": 0,
+					"label": "phải fix thành trên param"
+				}
+			]
 		}
 	]
 }

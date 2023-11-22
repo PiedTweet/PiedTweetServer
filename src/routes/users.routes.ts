@@ -33,7 +33,7 @@ import {
 import { registerController } from '~/controllers/users.controllers'
 import { wrapAsync } from '~/utils/handlers'
 import { filterMiddleware } from '~/middlewares/common.middlewares'
-import { UpdateMeReqBody } from '~/models/requests/Users.request'
+import { IUpdateMeReqBody } from '~/models/requests/Users.request'
 
 const usersRouter = Router()
 
@@ -49,7 +49,7 @@ body: {
   data_of_birth
 }
 */
-usersRouter.post('/register', registerValidator, wrapAsync(registerController)) //đúng ra là phải thêm có validator
+usersRouter.post('/register', registerValidator, wrapAsync(registerController))
 
 /*
 des: đăng nhập 
@@ -76,7 +76,7 @@ usersRouter.post('/logout', accessTokenValidator, refreshTokenValidator, wrapAsy
 /*
 des: email verify token  
 khi ng dùng đăng ký họ sẽ nhận đc mail có link dạng 
-https://localhost:3000/users/verify-email?token=<email_verify_token>
+https://localhost:4000/users/verify-email?token=<email_verify_token>
 
 nếu mà em nhấp vào link thì tạo ra req gửi email_verify_token lên server 
 
@@ -160,7 +160,7 @@ usersRouter.patch(
   '/me',
   accessTokenValidator,
   verifiedUserValidator,
-  filterMiddleware<UpdateMeReqBody>([
+  filterMiddleware<IUpdateMeReqBody>([
     'name',
     'date_of_birth',
     'bio',
