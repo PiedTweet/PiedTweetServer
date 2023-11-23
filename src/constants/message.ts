@@ -1,4 +1,5 @@
 export const USERS_MESSAGES = {
+  INVALID_PROPERTIES: 'Invalid properties',
   UPLOAD_SUCCESS: 'Upload success',
   EMAIL_NOT_VERIFIED: 'Email not verified',
   CHANGE_PASSWORD_SUCCESS: 'Change password success',
