@@ -10,13 +10,15 @@ import tweetsRouter from './routes/tweet.routes'
 import cors from 'cors'
 config()
 
-const PORT = process.env.PORT_DEVELOPMENT
+const PORT_BACKEND = process.env.PORT_DEVELOPMENT_BACKEND
+
+const PORT_FRONTEND = process.env.PORT_DEVELOPMENT_FRONTEND
 
 const app = express()
 initFolder()
 
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: `http://localhost:${PORT_FRONTEND}`,
   credentials: true,
   allowedHeaders: 'Content-Type,Authorization',
   optionsSuccessStatus: 200
@@ -58,6 +60,6 @@ app.use('/tweets', tweetsRouter)
 // Error handler tổng
 app.use(defaultErrorHandler)
 
-app.listen(PORT, () => {
-  console.log(`Project twitter này đang chạy trên port ${PORT}`)
+app.listen(PORT_BACKEND, () => {
+  console.log(`Project twitter này đang chạy trên port ${PORT_BACKEND}`)
 })

@@ -7,7 +7,9 @@
     "dev": "npx nodemon --development",
     "build": "rimraf ./dist && tsc && tsc-alias",
     "start": "node dist/index.js --production",
-    "lint": "eslint .",
+    "check-types": "tsc --noemit",
+    "eslint": "eslint",
+    "lint": "npm run eslint && npm run check-types",
     "lint:fix": "eslint . --fix",
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write ."
