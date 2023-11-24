@@ -30,7 +30,7 @@ class MediasService {
         return {
           url: isProduction
             ? `${process.env.HOST}/static/image/${newFilename}`
-            : `http://localhost:${process.env.PORT_DEVELOPMENT}/static/image/${newFilename}`,
+            : `http://localhost:${process.env.PORT_DEVELOPMENT_BACKEND}/static/image/${newFilename}`,
           type: MediaType.Image
         }
       })
@@ -47,7 +47,7 @@ class MediasService {
         return {
           url: isProduction
             ? `${process.env.HOST}/static/video/${newFilename}`
-            : `http://localhost:${process.env.PORT_DEVELOPMENT}/static/video-stream/${newFilename}`,
+            : `http://localhost:${process.env.PORT_DEVELOPMENT_BACKEND}/static/video-stream/${newFilename}`,
           type: MediaType.Video
         }
       })

@@ -4,6 +4,11 @@ import { pick } from 'lodash'
 //FilterKeys là mảng các key của object T nào đó
 
 type FilterKeys<T> = Array<keyof T>
+/**
+ * Hàm này đã bị không dùng
+ * @param filterKey
+ * @returns
+ */
 // prettier-ignore
 export const filterMiddleware = <T>(filterKey: FilterKeys<T>) => (req: Request, res: Response, next: NextFunction) => {
   req.body = pick(req.body, filterKey)
