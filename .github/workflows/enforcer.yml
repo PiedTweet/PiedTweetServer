@@ -1,14 +1,17 @@
-name: 'Check Branch'
+name: Enforce branch rules
 
 on:
   pull_request:
+    branches:
+      - main
 
 jobs:
-  check_branch:
+  check_branch_main:
     runs-on: ubuntu-latest
     steps:
-      - name: Check branch
-        if: github.base_ref == 'main' && github.head_ref != 'develop'
+      - name: Check Branch main
         run: |
-          echo "ERROR: You can only merge to main from dev."
-          exit 1
+          if [[ "${{ github.head_ref }}" != "develop" && ! "${{ github.head_ref }}" =~ ^hotfix/ ]]; then
+            echo "ERROR: You can only merge to main from develop or hotfix/*."
+            exit 1
+          fi
