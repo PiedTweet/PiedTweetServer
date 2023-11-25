@@ -1,0 +1,21 @@
+name: Merge "hotfix/**" into "main" and "develop"
+
+on:
+  pull_request:
+    branches:
+      - hotfix/**
+    types:
+      - closed
+
+jobs:
+  merge_hotfix_into_main_and_develop:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Merge hotfix into main and develop
+        run: |
+          git checkout main
+          git merge --no-ff origin/hotfix
+          git push origin main
+          git checkout develop
+          git merge --no-ff origin/hotfix
+          git push origin develop
