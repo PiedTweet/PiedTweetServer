@@ -36,6 +36,4 @@ We are very grateful for having Lê Điệp as our teacher in our lives. Without
     }
     ```
 
-## Test rule 
-## alo alo Nam Hoang dau roi 
-## toi dau lung qua 
+## Test rule
